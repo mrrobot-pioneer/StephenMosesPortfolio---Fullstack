@@ -83,7 +83,7 @@ const sr = ScrollReveal({
 
 sr.reveal(".perfil,.contact__form");
 sr.reveal(".info", { origin: "left", delay: 600 });
-sr.reveal(".skills", { origin: "left", delay: 8000 });
+sr.reveal(".skills", { origin: "left", delay: 900 });
 sr.reveal(".about", { origin: "right", delay: 1000 });
 sr.reveal(".projects__card, .services__card,.experience__card", {
   interval: 100,
