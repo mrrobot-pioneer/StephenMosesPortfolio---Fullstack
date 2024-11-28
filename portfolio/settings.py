@@ -92,6 +92,7 @@ USE_TZ = True
 
 # static files settings
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [
     BASE_DIR / 'portfolio_app/static/portfolio_app',
 ]
