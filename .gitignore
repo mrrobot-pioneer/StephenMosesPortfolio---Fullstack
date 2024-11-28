@@ -1,0 +1,35 @@
+# Python-related files
+*.pyc                 
+*.pyo                 
+__pycache__/          
+
+# Django-related
+*.db                  
+*.db-journal          
+db.sqlite3           
+media/                
+staticfiles/          
+
+# Virtual environment directories (ignore virtualenv/venv folders)
+venv/                 
+env/
+ENV/
+.venv/
+.Python
+
+
+# Coverage reports 
+.coverage
+.coverage.*
+
+# mypy cache 
+.mypy_cache/
+
+# Pytest cache 
+.cache/
+
+# IDE and editor folders (vscode,)
+.vscode/
+
+# environment variables
+.env                  
