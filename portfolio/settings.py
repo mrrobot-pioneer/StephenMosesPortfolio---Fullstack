@@ -11,9 +11,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-@li**dhnz)p4%o97pj)ccw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').strip().lower() == 'true'
 
-
-ALLOWED_HOSTS = ['stephenmosesportfolio-fullstack.onrender.com','stephenmoses.primeelements.pro']
-
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(",")
 
 # Application definition
 
@@ -29,8 +27,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
