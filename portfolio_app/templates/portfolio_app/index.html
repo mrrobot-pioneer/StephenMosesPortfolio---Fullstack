@@ -1,13 +1,18 @@
+{% load static %} {% load humanize %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="{% static 'js/scrollreveal.min.js' %}"></script>
+
     <!--=============== FAVICON ===============-->
     <link
       rel="shortcut icon"
-      href="assets/img/favicon.png"
+      href="{% static 'images/favicon.png' %}"
       type="image/x-icon"
     />
 
@@ -18,11 +23,16 @@
     />
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 
     <title>Stephen Moses - Portfolio</title>
   </head>
   <body>
+    <!-- ============ LIGHT/DARK MODE TOGGLER -->
+    <div class="toggler">
+      <i class="bx bx-moon"></i>
+    </div>
+
     <!--==================== NAV ====================-->
     <nav class="nav">
       <ul class="nav__list">
@@ -66,7 +76,7 @@
           <!--===== PERFIL =====-->
           <div class="perfil">
             <img
-              src="assets/img/home-perfil.png"
+              src="{% static 'images/profile.png' %}"
               class="perfil__img"
               alt="image"
             />
@@ -84,28 +94,56 @@
             </div>
           </div>
 
-          <!--===== INFO =====-->
-          <div class="info">
-            <div class="info__data">
-              <div class="info__circle"></div>
-              <h1 class="info__name">Stephen Moses</h1>
+          <!--===== ABOUT =====-->
+          <div class="about">
+            <h3 class="about__name">Stephen Moses - <br />Web Developer</h3>
+
+            <p class="about__description">
+              Passionate full-stack web developer, focused on building visually
+              apealing, fast, secure and scalable websites.
+            </p>
+
+            <div class="about__social">
+              <a
+                href="https://github.com/mrrobot-pioneer/"
+                target="_blank"
+                class="about__link"
+                title="Github"
+              >
+                <i class="bx bxl-github"></i>
+              </a>
+
+              <a href="#" target="_blank" class="about__link" title="Linkedin">
+                <i class="bx bxl-linkedin"></i>
+              </a>
+
+              <a href="#" target="_blank" class="about__link">
+                <i class="bx bxl-whatsapp"></i>
+              </a>
+
+              <a
+                href="https://primeelements.pro"
+                target="_blank"
+                class="about__link"
+                title="My Website"
+              >
+                <i class="bx bx-globe"></i>
+              </a>
             </div>
 
-            <div class="info__image">
+            <div class="about__image">
               <img
-                src="assets/img/about-perfil.png"
-                class="info__img"
+                src="{% static 'images/profile.png' %}"
+                class="about__img"
                 alt="about image"
               />
             </div>
 
-            <div class="info__description">
-              Passionate about creating and designing websites with the best
-              engaging interfaces.
-            </div>
-
+            <a href="#contact" class="button" style="margin-bottom: 1rem"
+              >Contact Me</a
+            >
             <a
-              href="assets/pdf/Xian-Cv.pdf"
+              href="{% static 'pdf/CV.pdf' %}"
               download
               target="_blank"
               class="button button--black"
@@ -113,194 +151,28 @@
             >
           </div>
 
-          <!--===== ABOUT =====-->
-          <div class="about">
-            <h3 class="about__name">Stephen Moses - <br />Web Developer</h3>
-
-            <p class="about__description">
-              Located in Nairobi, I have several years of experience in web
-              development and design, carrying out several successful projects.
-            </p>
-
-            <div class="about__social">
-              <a href="" target="_blank" class="about__link">
-                <i class="bx bxl-github"></i>
-              </a>
-
-              <a href="" target="_blank" class="about__link">
-                <i class="bx bxl-linkedin"></i>
-              </a>
-
-              <a href="" target="_blank" class="about__link">
-                <i class="bx bxl-whatsapp"></i>
-              </a>
-            </div>
-
-            <div class="about__image">
-              <img
-                src="assets/img/about-perfil.png"
-                class="about__img"
-                alt="about image"
-              />
-            </div>
-
-            <p class="about__note">
-              I don't write messages on social networks, send me an email and
-              I'll answer you.
-            </p>
-
-            <a href="#contact" class="button">Contact Me</a>
-          </div>
-
           <!--===== SKILLS =====-->
           <div class="skills">
             <h2 class="skills__title">My Skills</h2>
 
+            {% for category, skills in skills_by_category.items %}
             <div>
-              <h3 class="skills__subtitle">Frontend</h3>
+              <h3 class="skills__subtitle">{{category}}</h3>
               <div class="skills__items">
+                {% for skill in skills %}
                 <div class="skills__items-wrapper">
                   <img
-                    src="assets/img/skills-html.svg"
-                    alt="skills image"
+                    src="{{ skill.icon.url }}"
+                    alt="{{ skill.name }} icon"
                     class="skills__item"
-                    title="HTML"
+                    title="{{skill.name}}"
                   />
-
-                  <span>HTML</span>
+                  <span>{{ skill.name }}</span>
                 </div>
-
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-css.svg"
-                    alt="skills image"
-                    class="skills__item"
-                    title="CSS"
-                  />
-
-                  <span>CSS</span>
-                </div>
-
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-javascript.svg"
-                    alt="skills image"
-                    class="skills__item"
-                    title="Javascript"
-                  />
-
-                  <span>Javascript</span>
-                </div>
-
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-react.svg"
-                    alt="skills image"
-                    class="skills__item"
-                    title="React"
-                  />
-                  <span>React</span>
-                </div>
-
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-typescript.svg
-                    "
-                    alt="skills image"
-                    class="skills__item"
-                    title="Typescript"
-                  />
-                  <span>Typescript</span>
-                </div>
+                {% endfor %}
               </div>
             </div>
-
-            <div>
-              <h3 class="skills__subtitle">Backend</h3>
-              <div class="skills__items">
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-python.svg"
-                    alt="skills image"
-                    class="skills__item"
-                    title="Python"
-                  />
-                  <span>Python</span>
-                </div>
-
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-django.svg"
-                    alt="skills image"
-                    class="skills__item"
-                    title="Django"
-                  />
-                  <span>Django</span>
-                </div>
-
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-mysql.svg"
-                    alt="skills image"
-                    class="skills__item"
-                    title="MySQL"
-                  />
-                  <span>MySQL</span>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 class="skills__subtitle">Version Control</h3>
-              <div class="skills__items">
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-git.svg"
-                    alt="skills image"
-                    class="skills__item"
-                    title="Git"
-                  />
-                  <span>Git</span>
-                </div>
-
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-github.svg"
-                    alt="skills image"
-                    class="skills__item"
-                    title="Github"
-                  />
-                  <span>Github</span>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 class="skills__subtitle">Web Design</h3>
-              <div class="skills__items">
-                <div class="skills__items-wrapper">
-                  <img
-                    src="assets/img/skills-wordpress.svg"
-                    alt="skills image"
-                    class="skills__item"
-                    title="Wordpress"
-                  />
-                  <span>Wordpress</span>
-                </div>
-
-                <div class="skills__items">
-                  <div class="skills__items-wrapper">
-                    <img
-                      src="assets/img/skills-figma.svg"
-                      alt="skills image"
-                      class="skills__item"
-                      title="Figma"
-                    />
-                    <span>Figma</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
 
             <div class="skills_description">
               Visit the projects section to see the work done with these web
@@ -315,169 +187,46 @@
         <h2 class="section__title">Recent Projects</h2>
 
         <div class="projects__container container grid">
+          {% for project in projects %}
           <article class="projects__card">
-            <a href="#" title="_blank" class="projects__image">
+            <a
+              href="{{ project.link }}"
+              target="_blank"
+              class="projects__image"
+            >
               <img
-                src="assets/img/projects-1.png"
-                alt="project image"
+                src="{{ project.thumbnail.url }}"
+                alt="{{ project.name }}"
                 class="projects__img"
               />
             </a>
 
             <div class="projects__data">
-              <h3 class="projects__name">Nairobi Florists Shop</h3>
-              <p class="projects__description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                nulla.
-              </p>
+              <h3 class="projects__name">{{ project.name }}</h3>
+              <p class="projects__description">{{ project.description }}</p>
 
               <div class="projects__skills">
+                {% for skill in project.skills_used.all %}
                 <img
-                  src="assets/img/skills-javascript.svg"
-                  alt="project skills image"
+                  src="{{skill.icon.url}}"
+                  alt="{{ skill.name }}"
                   class="projects__skill"
+                  title="{{ skill.name }}"
                 />
-                <img
-                  src="assets/img/skills-html.svg"
-                  alt="project skills image"
-                  class="projects__skill"
-                />
-                <img
-                  src="assets/img/skills-react.svg"
-                  alt=""
-                  class="projects__skill"
-                />
+                {% endfor %}
               </div>
 
-              <a href="#" target="_blank" class="projects__button">
+              <a
+                href="{{ project.link }}"
+                target="_blank"
+                class="projects__button"
+              >
                 <i class="bx bx-link-alt"></i>
                 <span>See Project</span>
               </a>
             </div>
           </article>
-
-          <article class="projects__card">
-            <a href="#" title="_blank" class="projects__image">
-              <img
-                src="assets/img/projects-2.jpg"
-                alt="project image"
-                class="projects__img"
-              />
-            </a>
-
-            <div class="projects__data">
-              <h3 class="projects__name">Nairobi flowers</h3>
-              <p class="projects__description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                nulla.
-              </p>
-
-              <div class="projects__skills">
-                <img
-                  src="assets/img/skills-javascript.svg"
-                  alt="project skills image"
-                  class="projects__skill"
-                />
-                <img
-                  src="assets/img/skills-html.svg"
-                  alt="project skills image"
-                  class="projects__skill"
-                />
-                <img
-                  src="assets/img/skills-react.svg"
-                  alt=""
-                  class="projects__skill"
-                />
-              </div>
-
-              <a href="#" target="_blank" class="projects__button">
-                <i class="bx bx-link-alt"></i>
-                <span>See Project</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="projects__card">
-            <a href="#" title="_blank" class="projects__image">
-              <img
-                src="assets/img/projects-4.jpg"
-                alt="project image"
-                class="projects__img"
-              />
-            </a>
-
-            <div class="projects__data">
-              <h3 class="projects__name">Nairobi Flowers</h3>
-              <p class="projects__description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                nulla.
-              </p>
-
-              <div class="projects__skills">
-                <img
-                  src="assets/img/skills-javascript.svg"
-                  alt="project skills image"
-                  class="projects__skill"
-                />
-                <img
-                  src="assets/img/skills-html.svg"
-                  alt="project skills image"
-                  class="projects__skill"
-                />
-                <img
-                  src="assets/img/skills-react.svg"
-                  alt=""
-                  class="projects__skill"
-                />
-              </div>
-
-              <a href="#" target="_blank" class="projects__button">
-                <i class="bx bx-link-alt"></i>
-                <span>See Project</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="projects__card">
-            <a href="#" title="_blank" class="projects__image">
-              <img
-                src="assets/img/projects-3.jpg"
-                alt="project image"
-                class="projects__img"
-              />
-            </a>
-
-            <div class="projects__data">
-              <h3 class="projects__name">Nairobi City Florists</h3>
-              <p class="projects__description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                nulla.
-              </p>
-
-              <div class="projects__skills">
-                <img
-                  src="assets/img/skills-javascript.svg"
-                  alt="project skills image"
-                  class="projects__skill"
-                />
-                <img
-                  src="assets/img/skills-html.svg"
-                  alt="project skills image"
-                  class="projects__skill"
-                />
-                <img
-                  src="assets/img/skills-react.svg"
-                  alt=""
-                  class="projects__skill"
-                />
-              </div>
-
-              <a href="#" target="_blank" class="projects__button">
-                <i class="bx bx-link-alt"></i>
-                <span>See Project</span>
-              </a>
-            </div>
-          </article>
+          {% endfor %}
         </div>
       </section>
 
@@ -486,6 +235,7 @@
         <h2 class="section__title">My Services</h2>
 
         <div class="services__container container grid">
+          {% for service in services %}
           <article class="services__card">
             <div class="services__card">
               <div class="services__icon">
@@ -493,43 +243,21 @@
                 <i class="bx bx-code-alt"></i>
               </div>
 
-              <h3 class="services__name">Web Development</h3>
-              <p class="services__description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Exercitationem, dolore!
+              <h3 class="services__name">{{ service.name }}</h3>
+              <p class="services__description">{{ service.description }}</p>
+
+              {% if service.pricing %}
+              <h3 class="services__pricing">
+                Approximate Pricing:
+                <span>KSH {{ service.pricing|intcomma }}</span>
+              </h3>
+              <p class="services_comment">
+                ** Price may vary based on the actual project **
               </p>
+              {% endif %}
             </div>
           </article>
-
-          <article class="services__card">
-            <div class="services__card">
-              <div class="services__icon">
-                <div class="services__circle"></div>
-                <i class="bx bx-code-alt"></i>
-              </div>
-
-              <h3 class="services__name">Web Development</h3>
-              <p class="services__description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Exercitationem, dolore!
-              </p>
-            </div>
-          </article>
-
-          <article class="services__card">
-            <div class="services__card">
-              <div class="services__icon">
-                <div class="services__circle"></div>
-                <i class="bx bx-code-alt"></i>
-              </div>
-
-              <h3 class="services__name">Web Development</h3>
-              <p class="services__description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Exercitationem, dolore!
-              </p>
-            </div>
-          </article>
+          {% endfor %}
         </div>
       </section>
 
@@ -538,44 +266,22 @@
         <h2 class="section__title">My Experience</h2>
 
         <div class="experience__container container grid">
+          {% for experience in experiences %}
           <article class="experience__card">
-            <h2 class="experince__company">Google</h2>
+            <h2 class="experience__company">{{ experience.company }}</h2>
 
             <div class="experience__data">
-              <h3 class="experience__profession">Mobile App Development</h3>
-              <span class="experince__date">03/24 - 08/24</span>
+              <h3 class="experience__profession">{{ experience.role }}</h3>
+              <span class="experience__date">
+                {{ experience.start_date }} - {% if experience.end_date %}
+                {{experience.end_date }} {% else %} Present {% endif %}
+              </span>
               <p class="experience__description">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores, eius.
+                {{ experience.description }}
               </p>
             </div>
           </article>
-
-          <article class="experience__card">
-            <h2 class="experince__company">Google</h2>
-
-            <div class="experience__data">
-              <h3 class="experience__profession">Mobile App Development</h3>
-              <span class="experince__date">03/24 - 08/24</span>
-              <p class="experience__description">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores, eius.
-              </p>
-            </div>
-          </article>
-
-          <article class="experience__card">
-            <h2 class="experince__company">Google</h2>
-
-            <div class="experience__data">
-              <h3 class="experience__profession">Mobile App Development</h3>
-              <span class="experince__date">03/24 - 08/24</span>
-              <p class="experience__description">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores, eius.
-              </p>
-            </div>
-          </article>
+          {% endfor %}
         </div>
       </section>
 
@@ -584,7 +290,9 @@
         <h2 class="section__title">Contact Me</h2>
 
         <div class="contact__container container grid">
-          <form action="#" class="contact__form grid" id="contact-form">
+          <form class="contact__form grid" id="contact-form">
+            {% csrf_token %}
+
             <div class="contact__group grid">
               <input
                 type="text"
@@ -594,9 +302,9 @@
                 class="contact__input"
               />
               <input
-                type="email"
+                type="text"
                 name="user_email"
-                placeholder="Email Address"
+                placeholder="Email Address / Phone Number"
                 required
                 class="contact__input"
               />
@@ -606,6 +314,7 @@
               name="user_message"
               placeholder="Your Message"
               class="contact__input contact__area"
+              required
             ></textarea>
 
             <button type="submit" class="button contact__button">
@@ -662,13 +371,7 @@
       <i class="bx bx-up-arrow-alt"></i>
     </a>
 
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="assets/js/scrollreveal.min.js"></script>
-
-    <!--=============== EMAIL JS ===============-->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
     <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>

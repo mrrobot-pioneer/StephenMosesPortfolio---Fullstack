@@ -1,5 +1,6 @@
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,6 +18,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'portfolio_app',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,11 +90,16 @@ USE_I18N = True
 USE_TZ = True
 
 
+# static files settings
 STATIC_URL = 'static/'
-
 STATICFILES_DIRS = [
-    BASE_DIR / 'portfolio_app/static',
+    BASE_DIR / 'portfolio_app/static/portfolio_app',
 ]
+
+# Media settings
+MEDIA_URL = '/media/'  
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
+
 
 
 
