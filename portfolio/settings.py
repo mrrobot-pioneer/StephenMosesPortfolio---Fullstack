@@ -6,12 +6,13 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ehsurztr694fl0p2&d(vyn=3s=qm1*o80#@kjsd-+lefwui5*p'
+SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-@li**dhnz)p4%o97pj)ccw-od!h^hhl%m3$q0batf=s842b^l3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').strip().lower() == 'true'
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['stephenmosesportfolio-fullstack.onrender.com','stephenmoses.primeelements.pro']
 
 
 # Application definition
@@ -100,8 +101,6 @@ STATICFILES_DIRS = [
 # Media settings
 MEDIA_URL = '/media/'  
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
-
-
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
