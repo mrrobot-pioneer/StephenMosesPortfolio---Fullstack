@@ -83,8 +83,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
+# Set timezone to Nairobi's local time
+TIME_ZONE = 'Africa/Nairobi'
 USE_I18N = True
 
 USE_TZ = True
