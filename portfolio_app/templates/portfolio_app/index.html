@@ -191,9 +191,13 @@
       <section class="projects section" id="projects">
         <h2 class="section__title">Recent Projects</h2>
 
-        <div class="projects__container container grid">
+        <swiper-container
+          class="mySwiper projects__container container"
+          id="projects"
+          init="false"
+        >
           {% for project in projects %}
-          <article class="projects__card">
+          <swiper-slide class="projects__card">
             <a
               href="{{ project.link }}"
               target="_blank"
@@ -230,9 +234,9 @@
                 <span>Live Preview</span>
               </a>
             </div>
-          </article>
+          </swiper-slide>
           {% endfor %}
-        </div>
+        </swiper-container>
       </section>
 
       <!--==================== SERVICES ====================-->
@@ -399,6 +403,31 @@
     <a href="#home" class="scrollup" id="scroll-up">
       <i class="bx bx-up-arrow-alt"></i>
     </a>
+
+    <!-- SWIPER JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+    <script>
+      const swiperEl = document.querySelector("swiper-container");
+      Object.assign(swiperEl, {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+          clickable: true,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+        },
+      });
+      swiperEl.initialize();
+    </script>
 
     <!--=============== MAIN JS ===============-->
     <script src="{% static 'js/main.js' %}"></script>

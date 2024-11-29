@@ -141,6 +141,10 @@ img {
   overflow: hidden;
 }
 
+swiper-slide {
+  margin-bottom: 2rem;
+}
+
 /* ============Toggler */
 .toggler {
   color: var(--white-color);
@@ -385,7 +389,7 @@ img {
   display: block;
   overflow: hidden;
   border-radius: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .projects__img {
@@ -405,6 +409,8 @@ img {
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
+  border-top: 1px solid var(--text-color);
+  padding-top: 0.5rem;
 }
 
 .projects__description {
@@ -865,7 +871,7 @@ img {
   }
 
   .services__card {
-    padding-block: 3rem;
+    padding-block: 2rem;
   }
 
   .services__icon i {
