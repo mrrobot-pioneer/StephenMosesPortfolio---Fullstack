@@ -5,7 +5,7 @@ from .models import Project, Skill, Service, Experience, Message
 
 def index(request):
     # Fetch and order projects by rank first, then by created_at
-    projects = Project.objects.all().order_by('-rank', '-created_at')
+    projects = Project.objects.all().order_by('rank', '-created_at')
     services = Service.objects.all()
     experiences = Experience.objects.all().order_by('-start_date')
 

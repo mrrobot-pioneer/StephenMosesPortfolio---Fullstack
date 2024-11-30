@@ -394,7 +394,7 @@ swiper-slide {
 
 .projects__img {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/9;
   object-fit: cover;
   object-position: center;
   transition: transform 0.4s;
