@@ -6,7 +6,6 @@ __pycache__/
 # Django-related
 *.db                  
 *.db-journal          
-media/                
 staticfiles/          
 
 # Virtual environment directories (ignore virtualenv/venv folders)
