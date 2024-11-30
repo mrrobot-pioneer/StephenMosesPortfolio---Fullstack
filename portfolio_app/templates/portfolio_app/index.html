@@ -191,11 +191,7 @@
       <section class="projects section" id="projects">
         <h2 class="section__title">Recent Projects</h2>
 
-        <swiper-container
-          class="mySwiper projects__container container"
-          id="projects"
-          init="false"
-        >
+        <swiper-container class="mySwiper container" init="false">
           {% for project in projects %}
           <swiper-slide class="projects__card">
             <a
@@ -420,7 +416,7 @@
             slidesPerView: 2,
             spaceBetween: 20,
           },
-          1200: {
+          1168: {
             slidesPerView: 3,
             spaceBetween: 20,
           },

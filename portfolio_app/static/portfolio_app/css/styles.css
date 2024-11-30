@@ -120,6 +120,7 @@ img {
 .container {
   max-width: 1168px;
   margin-inline: 1.5rem;
+  overflow: hidden;
 }
 
 .grid {
@@ -139,6 +140,10 @@ img {
 
 .main {
   overflow: hidden;
+}
+
+.mySwiper {
+  width: 100%;
 }
 
 swiper-slide {
@@ -379,6 +384,7 @@ swiper-slide {
   background-color: var(--container-color);
   padding: 1rem;
   border-radius: 2rem;
+  height: auto;
 }
 
 .projects__card:hover .projects__img {
