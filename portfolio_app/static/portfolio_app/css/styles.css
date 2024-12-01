@@ -118,6 +118,7 @@ img {
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
+  height: auto;
   width: 100%;
   max-width: 1168px;
   margin-inline: 1.5rem;
@@ -129,7 +130,7 @@ img {
 }
 
 .section {
-  padding-block: 2rem 3rem;
+  padding: 2rem 1rem;
   max-width: 1168px;
   margin: 0 auto;
 }
@@ -146,10 +147,11 @@ img {
 
 .mySwiper {
   width: 100%;
+  height: 100%;
 }
 
 swiper-slide {
-  margin-bottom: 2rem;
+  margin-bottom: 2rem !important;
 }
 
 /* ============Toggler */
@@ -382,18 +384,18 @@ swiper-slide {
 }
 
 /*=============== PROJECTS ===============*/
-.projects__card {
+
+.project__card {
   background-color: var(--container-color);
   padding: 1rem;
   border-radius: 2rem;
-  height: auto;
+  height: auto !important;
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  margin-bottom: 2rem;
 }
 
-.projects__card:hover .projects__img {
+.project__card:hover .projects__img {
   transform: scale(1.2);
 }
 
@@ -421,7 +423,7 @@ swiper-slide {
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
-  border-top: 1px solid var(--text-color);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 0.5rem;
 }
 

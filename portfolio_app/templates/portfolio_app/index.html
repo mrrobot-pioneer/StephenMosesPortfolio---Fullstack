@@ -191,9 +191,9 @@
       <section class="projects section" id="projects">
         <h2 class="section__title">Recent Projects</h2>
 
-        <swiper-container class="mySwiper" init="false">
+        <swiper-container class="mySwiper container" init="false">
           {% for project in projects %}
-          <swiper-slide class="projects__card">
+          <swiper-slide class="project__card">
             <a
               href="{{ project.link }}"
               target="_blank"
@@ -232,6 +232,10 @@
             </div>
           </swiper-slide>
           {% endfor %}
+
+          <!-- Navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </swiper-container>
       </section>
 
@@ -410,6 +414,10 @@
         spaceBetween: 10,
         pagination: {
           clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         },
         breakpoints: {
           768: {
