@@ -17,7 +17,7 @@ contactBtn.addEventListener("submit", function (event) {
   // Show a "sending..." message
   contactMessageElement.textContent = "Sending message...";
 
-  fetch("http://127.0.0.1:8000/contact/", {
+  fetch("https://stephenmoses.primeelements.pro/contact/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
