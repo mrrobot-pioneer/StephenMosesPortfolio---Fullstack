@@ -72,6 +72,13 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100vw;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  width: 100%;
 }
 
 body,
@@ -133,6 +140,7 @@ img {
   padding: 2rem 1rem;
   max-width: 1168px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .section__title {
@@ -384,6 +392,10 @@ swiper-slide {
 }
 
 /*=============== PROJECTS ===============*/
+.projects {
+  width: 100%;
+  overflow: hidden;
+}
 
 .project__card {
   background-color: var(--container-color);
