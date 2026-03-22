@@ -1,6 +1,5 @@
 from django.db import models
-
-from django.db import models
+from django.core.validators import FileExtensionValidator
 
 class Project(models.Model):
     RANK_CHOICES = [
@@ -24,18 +23,22 @@ class Project(models.Model):
 
 
 class Skill(models.Model):
-    category = models.CharField(max_length=100)
+    CATEGORY_CHOICES = [
+        ('frontend', 'Frontend'),
+        ('backend', 'Backend'),
+        ('testing', 'Testing'),
+        ('deployment', 'Deployment'),
+    ]
+
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     name = models.CharField(max_length=100)
-    icon = models.ImageField(upload_to='skills/')
+    icon = models.FileField(
+        upload_to='skills/',
+        validators=[FileExtensionValidator(allowed_extensions=['svg', 'png', 'jpg', 'jpeg', 'gif', 'webp'])]
+    )
 
-    def __str__(self):
-        return self.name
-
-
-class Service(models.Model):
-    name =  models.CharField(max_length=100)
-    description = models.TextField()
-    pricing = models.IntegerField()
+    class Meta:
+        ordering = ['category', 'name']
 
     def __str__(self):
         return self.name

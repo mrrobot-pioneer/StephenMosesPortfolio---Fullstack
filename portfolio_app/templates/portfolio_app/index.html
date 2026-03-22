@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 
     <title>Stephen Moses - Portfolio</title>
+    
   </head>
   <body>
     <!-- ============ LIGHT/DARK MODE TOGGLER -->
@@ -49,12 +50,6 @@
         </li>
 
         <li>
-          <a href="#services" title="Services" class="nav__link">
-            <i class="bx bx-file"></i>
-          </a>
-        </li>
-
-        <li>
           <a href="#experience" title="Experience" class="nav__link">
             <i class="bx bx-medal"></i>
           </a>
@@ -74,13 +69,7 @@
       <section class="home section" id="home">
         <div class="home__container container grid">
           <!--===== PERFIL =====-->
-          <div class="perfil">
-            <img
-              src="{% static 'images/profile.png' %}"
-              class="perfil__img"
-              alt="image"
-            />
-
+          <div class="perfil" style="background-image: url('{% static 'images/profile.png' %}')">
             <div class="perfil__data">
               <h1 class="perfil__name">
                 Stephen <br />
@@ -89,18 +78,17 @@
 
               <div class="perfil__buttons">
                 <a href="#projects" class="button">Projects</a>
-                <a href="#services" class="button button--black">Services</a>
+                <a href="#experience" class="button button--black">Experience</a>
               </div>
             </div>
           </div>
 
           <!--===== ABOUT =====-->
           <div class="about">
-            <h3 class="about__name">Stephen Moses - <br />Web Developer</h3>
+            <h3 class="about__name">Stephen Moses - <br />Frontend Developer</h3>
 
             <p class="about__description">
-              Passionate full-stack web developer, focused on building visually
-              apealing, fast, secure and scalable websites.
+              Frontend Developer specializing in Next.js, TypeScript, and Tailwind CSS — building responsive, accessible, and performant web interfaces. Comfortable collaborating with backend teams and integrating REST APIs.
             </p>
 
             <div class="about__social">
@@ -191,83 +179,62 @@
       <section class="projects section" id="projects">
         <h2 class="section__title">Recent Projects</h2>
 
-        <swiper-container class="mySwiper container" init="false">
-          {% for project in projects %}
-          <swiper-slide class="project__card">
-            <a
-              href="{{ project.link }}"
-              target="_blank"
-              class="projects__image"
-            >
-              <img
-                src="{{ project.thumbnail.url }}"
-                alt="{{ project.name }}"
-                class="projects__img"
-              />
+        <div class="proj-list">
+          {% for project in projects|slice:":3" %}
+          <div class="proj-card">
+            <a href="{{ project.link }}" target="_blank">
+              <img class="proj-thumb" src="{{ project.thumbnail.url }}" alt="{{ project.name }}" />
             </a>
-
-            <div class="projects__data">
-              <h3 class="projects__name">{{ project.name }}</h3>
-              <p class="projects__description">{{ project.description }}</p>
-
-              <div class="projects__skills">
+            <div class="proj-body">
+              <h3 class="proj-title">{{ project.name }}</h3>
+              <hr class="proj-divider"/>
+              <p class="proj-desc">{{ project.description }}</p>
+              <div class="proj-skills">
                 {% for skill in project.skills_used.all %}
-                <img
-                  src="{{skill.icon.url}}"
-                  alt="{{ skill.name }}"
-                  class="projects__skill"
-                  title="{{ skill.name }}"
-                />
+                <span class="proj-skill">{{ skill.name }}</span>
                 {% endfor %}
               </div>
-
-              <a
-                href="{{ project.link }}"
-                target="_blank"
-                class="projects__button"
-              >
-                <i class="bx bx-link-alt"></i>
-                <span>Live Preview</span>
+              <a href="{{ project.link }}" target="_blank" class="proj-link">
+                <i class="bx bx-right-arrow-alt"></i>
+                Live Preview
               </a>
             </div>
-          </swiper-slide>
-          {% endfor %}
-
-          <!-- Navigation buttons -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </swiper-container>
-      </section>
-
-      <!--==================== SERVICES ====================-->
-      <section class="services section" id="services">
-        <h2 class="section__title">My Services</h2>
-
-        <div class="services__container container grid">
-          {% for service in services %}
-          <article class="services__card">
-            <div class="services__card">
-              <div class="services__icon">
-                <div class="services__circle"></div>
-                <i class="bx bx-code-alt"></i>
-              </div>
-
-              <h3 class="services__name">{{ service.name }}</h3>
-              <p class="services__description">{{ service.description }}</p>
-
-              {% if service.pricing %}
-              <h3 class="services__pricing">
-                Approximate Pricing:
-                <span>KSH {{ service.pricing|intcomma }}</span>
-              </h3>
-              <p class="services_comment">
-                ** Price may vary based on the actual project **
-              </p>
-              {% endif %}
-            </div>
-          </article>
+          </div>
           {% endfor %}
         </div>
+
+        {% if projects.count > 3 %}
+        <div class="proj-list hidden-projects" id="proj-more">
+          {% for project in projects|slice:"3:" %}
+          <div class="proj-card">
+            <a href="{{ project.link }}" target="_blank">
+              <img class="proj-thumb" src="{{ project.thumbnail.url }}" alt="{{ project.name }}" />
+            </a>
+            <div class="proj-body">
+              <h3 class="proj-title">{{ project.name }}</h3>
+              <hr class="proj-divider"/>
+              <p class="proj-desc">{{ project.description }}</p>
+              <div class="proj-skills">
+                {% for skill in project.skills_used.all %}
+                <span class="proj-skill">{{ skill.name }}</span>
+                {% endfor %}
+              </div>
+              <a href="{{ project.link }}" target="_blank" class="proj-link">
+                <i class="bx bx-right-arrow-alt"></i>
+                Live Preview
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="proj-more-wrapper">
+          <button class="show-more-btn" onclick="toggleMore()">
+            <span id="show-more-label">Show more</span>
+            <i class="bx bx-right-arrow-alt" id="show-more-icon"></i>
+          </button>
+        </div>
+        {% endif %}
       </section>
 
       <!--==================== EXPERIENCE ====================-->
@@ -349,9 +316,6 @@
             <li>
               <a href="#projects" class="footer__link">Projects</a>
             </li>
-            <li>
-              <a href="#services" class="footer__link">Services</a>
-            </li>
           </ul>
         </div>
 
@@ -431,6 +395,16 @@
         },
       });
       swiperEl.initialize();
+
+      // Toggle More Projects Function
+      function toggleMore() {
+        const more = document.getElementById('proj-more');
+        const label = document.getElementById('show-more-label');
+        const icon = document.getElementById('show-more-icon');
+        const expanded = more.classList.toggle('visible');
+        label.textContent = expanded ? 'Show less' : 'Show more';
+        icon.className = expanded ? 'bx bx-up-arrow-alt' : 'bx bx-right-arrow-alt';
+      }
     </script>
 
     <!--=============== MAIN JS ===============-->
